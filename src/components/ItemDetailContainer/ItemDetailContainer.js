@@ -21,10 +21,25 @@ const ItemDetailContainer = () => {
             .finally(() => setLoading(false));
     }, [db, typeId]);
 
+    console.log("ItemDetailContainer: ", items);
+
     return (
         <div className="ItemDetailContainer">
             <p>Hola ItemDetailContainer</p>
-            <ItemDetail {...items} />
+            {items.map((item) => (
+                <ItemDetail
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    stock={item.stock}
+                    price={item.price}
+                    img={item.img}
+                    alt={item.alt}
+                    text={item.text}
+                    detail={item.detail}
+                    type={item.type}
+                />
+            ))}
         </div>
     );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, title, stock, price, img, alt, text, detail, type }) => {
     
-    console.log(id, title, stock, price, img, alt, text, detail, type);
+    console.log("ItemDetail log", id, title, stock, price, img, alt, text, detail, type);
     
     return(
         <div className="card">
