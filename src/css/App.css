@@ -100,7 +100,7 @@ p {
 
 /*Diseño pie de página*/
 footer{
-    background-color: #aeaeae;
+    background-color: #f8f9fa;
 }
 
 
@@ -114,6 +114,12 @@ img{
     width: 60px;
     text-align: center;
     margin: 0 10px;
+}
+
+.button.is-danger {
+    background-color: #ff0033;
+    border-color: transparent;
+    color: #fff;
 }
 
 /*

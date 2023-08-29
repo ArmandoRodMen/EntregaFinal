@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
                 const itemsData = response.docs.map((item) => ({ id: item.id, ...item.data() }));
                 // Asigna el primer item al estado
                 if (itemsData.length > 0) {
-                    setItem(itemsData[0]);
+                    setItem(itemsData[1]);
                 }
             })
             .catch((error) => console.log(error))

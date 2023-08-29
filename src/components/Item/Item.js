@@ -16,11 +16,9 @@ const Item = ({ item }) => {
                     </div>
                     <div className="card-content">
                         <div className="content">
-                            <h5 className="subtitle is-7">{type}</h5>
                             <h2 className="title is-6">Título: {title}</h2>
                             <h2 className="subtitle is-7">$ {price}</h2>
                             <h2 className="subtitle is-7">{text}</h2>
-                            <h4 className="subtitle is-7">{detail}</h4>
                             <h3>
                                 <Link to={`/detail/${id}`} className="subtitle is-7">Más información</Link>
                             </h3>
