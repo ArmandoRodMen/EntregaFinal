@@ -23,6 +23,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div className="ItemDetailContainer">
+            <p>Hola ItemDetailContainer</p>
             <ItemDetail {...items} />
         </div>
     );
