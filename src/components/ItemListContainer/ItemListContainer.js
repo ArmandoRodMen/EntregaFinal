@@ -26,18 +26,18 @@ const ItemListContainer = () => {
     return (
         <div>
         {loading ? (
-            <div class="section is-large">
-                <div class="box is-primary">
-                    <div className="spinner container">
-                    <Audio
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="red"
-                        ariaLabel="loading"
-                        wrapperStyle
-                        wrapperClass
-                    />
+            <div className="container d-flex flex-row justify-content-center">
+                <div className='section is-large'>
+                    <div className='box'>
+                        <Audio
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="red"
+                                ariaLabel="loading"
+                                wrapperStyle
+                                wrapperClass
+                            />
                     </div>
                 </div>
             </div>

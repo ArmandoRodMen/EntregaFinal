@@ -30,3 +30,7 @@ const ItemDetail = ({ id, title, stock, price, img, alt, text, detail, type }) =
 };
 
 export default ItemDetail
+
+
+
+
