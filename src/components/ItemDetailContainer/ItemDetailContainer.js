@@ -17,8 +17,11 @@ const ItemDetailContainer = () => {
             const productRef = doc(db, 'items', typeId);
             getDoc(productRef)
                 .then((response) => {
-                    if (response.exists()) { 
-                        setItem({ id: response.id, ...response.data() });
+                    console.log("productRef es:", productRef);
+                    console.log("response es: ", response);
+                    if (response.exists()) {
+                        const itemData = response.data();
+                        setItem({ id: response.id, ...itemData });
                     } else {
                         console.log("Document not found");
                     }
@@ -32,20 +35,26 @@ const ItemDetailContainer = () => {
         } else {
             setLoading(false);
         }
+        console.log("item es: ",item);
+        console.log("typeId es: ",typeId);
+        console.log("db es:", db.doc);
     }, [typeId, db]);
+
+
 
     return (
         <div className="ItemDetailContainer">
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                item && <ItemDetail item={item} itemKey={item.id} />
+                item && <ItemDetail item={item} />
             )}
         </div>
     );
 }
 
 export default ItemDetailContainer;
+
 
 
 

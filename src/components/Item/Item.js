@@ -3,7 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 
 const Item = ({ item }) => {
-    const { id, title, stock, price, img, alt, text, detail, type } = item;
+    const { id, title, stock, price, img, alt, text} = item;
 
     return (
         <div className="column is-one-fifth-desktop is-one-quarter-tablet is-full-mobile">

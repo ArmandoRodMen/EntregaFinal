@@ -2,13 +2,12 @@ import React from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 
-const ItemDetail = ({ item, itemKey }) => {
+const ItemDetail = ({ item }) => {
     return (
         <div className="ItemDetail">
             <h2>Item Details</h2>
             {item && (
                 <div>
-                    <p>Item ID: {itemKey}</p>
                     <p>Name: {item.name}</p>
                     <p>Description: {item.description}</p>
                     <ItemCount
