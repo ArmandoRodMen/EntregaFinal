@@ -1,0 +1,121 @@
+/*
+    Armando Rodriguez
+    PreEntrega2
+*/
+
+/*Importar tipografía*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@400;500;900&display=swap");
+
+
+/*Reset*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*Altura del html*/
+html {
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    text-align: center;
+    background: rgb(225, 230, 255);
+    margin: 0px;
+    padding: 0px;
+    font-size: 1rem;
+    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Oswald', sans-serif;
+}
+
+/*Altura y acomodo barra de navegación*/
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    resize: both;
+}
+
+/*Diseño h1*/
+h1 {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-top: 2.3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+/*Diseño h2*/
+h2 {
+    font-family: 'Maven Pro', sans-serif;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+/*Diseño h3*/
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+/*Diseño h4*/
+h4 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+    width: 95%;
+}
+
+/*Diseño h5*/
+h5 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    text-align: right;
+    color: black;
+    width: 95%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/*Diseño p*/
+p {
+    font-family: "Roboto", sans-serif;
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    text-align: justify;
+    color: black;
+    width: 90%;
+}
+
+/*Diseño pie de página*/
+footer{
+    background-color: #aeaeae;
+}
+
+
+/*Diesño imagen*/
+img{
+    display: flex;
+    align-items: center;
+}
+
+.count {
+    width: 60px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+/*
+    Fin de código
+*/
