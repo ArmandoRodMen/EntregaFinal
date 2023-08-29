@@ -116,10 +116,12 @@ img{
     margin: 0 10px;
 }
 
-.button.is-danger {
-    background-color: #ff0033;
-    border-color: transparent;
-    color: #fff;
+.btn-danger {
+    background-color: red;
+}
+
+.btn-primary {
+    background-color: black;
 }
 
 /*
