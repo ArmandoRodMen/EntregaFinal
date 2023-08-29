@@ -7,7 +7,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import app from "../../config/firebase";
 
 const ItemDetailContainer = () => {
-    const [items, setItems] = useState([]);
+    const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
     const { typeId } = useParams();
     const db = getFirestore(app);
@@ -16,19 +16,21 @@ const ItemDetailContainer = () => {
         const queryCollection = collection(db, 'items');
         const queryCollectionFilter = typeId ? query(queryCollection, where('type', '==', typeId)) : queryCollection;
         getDocs(queryCollectionFilter)
-            .then((response) => setItems(response.docs.map((item) => ({ id: item.id, ...item.data() }))))
+            .then((response) => {
+                const itemsData = response.docs.map((item) => ({ id: item.id, ...item.data() }));
+                // Asigna el primer item al estado
+                if (itemsData.length > 0) {
+                    setItem(itemsData[0]);
+                }
+            })
             .catch((error) => console.log(error))
             .finally(() => setLoading(false));
     }, [db, typeId]);
 
-    console.log("ItemDetailContainer: ", items);
-
     return (
         <div className="ItemDetailContainer">
-            <p>Hola ItemDetailContainer</p>
-            {items.map((item) => (
+            {item && (
                 <ItemDetail
-                    key={item.id}
                     id={item.id}
                     title={item.title}
                     stock={item.stock}
@@ -39,7 +41,7 @@ const ItemDetailContainer = () => {
                     detail={item.detail}
                     type={item.type}
                 />
-            ))}
+            )}
         </div>
     );
 }

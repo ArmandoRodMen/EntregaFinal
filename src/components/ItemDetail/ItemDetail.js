@@ -8,7 +8,6 @@ const ItemDetail = ({ id, title, stock, price, img, alt, text, detail, type }) =
     return(
         <div className="card">
             <div className="box">
-                <p>Hola ItemDetail</p>
                 <h2>{title}</h2>
                 <figure className="image is-square">
                     <img src={img} alt={alt} />
