@@ -5,7 +5,9 @@
 
 /*Importar tipografía*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@400;500;900&display=swap");
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /*Reset*/
 * {
@@ -37,6 +39,18 @@ nav {
     align-items: center;
     justify-content: center;
     resize: both;
+}
+
+.icon-large {
+    font-size: 3rem; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.icon-medium {
+    font-size: 2rem; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.icon-small {
+    font-size: 1rem; /* Puedes ajustar el valor según tus necesidades */
 }
 
 /*Diseño h1*/
@@ -104,10 +118,12 @@ footer{
 }
 
 
+
 /*Diesño imagen*/
 img{
     display: flex;
     align-items: center;
+    object-fit: cover;
 }
 
 .count {
@@ -116,14 +132,20 @@ img{
     margin: 0 10px;
 }
 
-.btn-danger {
-    background-color: red;
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #000000 !important;
 }
 
-.btn-primary {
-    background-color: black;
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+    background-color: #ff0000 !important;
 }
 
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    color: var(--bs-btn-active-color);
+    background-color: var(--bs-btn-active-bg);
+    border-color: #0a0a0a;
+}
 /*
     Fin de código
 */

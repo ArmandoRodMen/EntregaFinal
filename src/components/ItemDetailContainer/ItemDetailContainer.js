@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import ItemDetail from "../ItemDetail/ItemDetail";
+import Loader from '../Loader/Loader';
 
 import app from "../../config/firebase";
 
@@ -9,16 +10,14 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const { typeId } = useParams();
+    const { itemId } = useParams();
     const db = getFirestore(app);
 
     useEffect(() => {
-        if (typeId) {
-            const productRef = doc(db, 'items', typeId);
+        if (itemId) {
+            const productRef = doc(db, 'items', itemId);
             getDoc(productRef)
                 .then((response) => {
-                    console.log("productRef es:", productRef);
-                    console.log("response es: ", response);
                     if (response.exists()) {
                         const itemData = response.data();
                         setItem({ id: response.id, ...itemData });
@@ -35,17 +34,15 @@ const ItemDetailContainer = () => {
         } else {
             setLoading(false);
         }
-        console.log("item es: ",item);
-        console.log("typeId es: ",typeId);
-        console.log("db es:", db.doc);
-    }, [typeId, db]);
+        console.log("itemId es: ",itemId);
+    }, [itemId, db]);
 
 
 
     return (
         <div className="ItemDetailContainer">
             {loading ? (
-                <p>Loading...</p>
+                        <Loader/>
             ) : (
                 item && <ItemDetail item={item} />
             )}
@@ -54,56 +51,3 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer;
-
-
-
-
-
-
-/*
-
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getFirestore, doc, getDoc } from 'firebase/firestore'; // Import corrected Firestore methods
-import ItemDetail from "../ItemDetail/ItemDetail";
-
-const ItemDetailContainer = () => {
-    const [item, setItem] = useState({}); 
-    const [loading, setLoading] = useState(true);
-
-    const { typeId } = useParams();
-
-    useEffect(() => {
-        const db = getFirestore();
-        const productRef = doc(db, 'items', typeId); 
-        getDoc(productRef)
-            .then((response) => {
-                if (response.exists()) { 
-                    setItem({ id: response.id, ...response.data() });
-                } else {
-                    console.log("Document not found");
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, [typeId]);
-
-    return (
-        <div className="ItemDetailContainer">
-            {loading ? (
-                <p>Loading...</p>
-            ) : (
-                item && <ItemDetail item={item} itemKey={item.id} />
-            )}
-        </div>
-    );
-}
-
-export default ItemDetailContainer;
-
-
-*/
