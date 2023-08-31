@@ -7,6 +7,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 const ItemDetail = ({ item }) => {
     return (
+
         <div className="container mx-auto 10px">
             <div className="box">
                 {item && (
@@ -29,11 +30,13 @@ const ItemDetail = ({ item }) => {
                         <button type="button" class="btn btn-lg">
                             <Link to="/">
                                 <IoArrowBackCircleSharp className="icon-large"/>
-                            </Link></button>
+                            </Link>
+                        </button>
                     </div>
                 )}
             </div>
         </div>
+
     );
 }
 

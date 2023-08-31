@@ -1,8 +1,34 @@
-/*
-    Armando Rodriguez
-    PreEntrega2
-*/
+import shoppingCartIcon from "./media/shoppingCart.svg";
+import { Link } from "react-router-dom";
+import { CartContext } from "../CartContext/CartContext";
+import { useContext } from "react";
 
+
+const CartWidget = () => {
+
+    const { totalQuantity, cart } = useContext(CartContext);
+
+    return (
+        <Link to='/cart' className="navbar-end cart" style={{display: cart.length > 0 ? 'block' : 'none'}}>
+                <img src={shoppingCartIcon} alt="cart"/>
+                <span>({totalQuantity()})</span>
+        </Link>
+    )
+}
+
+export default CartWidget
+
+
+
+
+
+
+
+
+
+
+
+/*
 import CartIcon from "./media/shoppingCart.svg"; //Importar carrito icono vector
 
 const CartWidget=()=>{
@@ -17,6 +43,7 @@ const CartWidget=()=>{
 }
 
 export default CartWidget; //Exportar componente
+*/
 
 /*
     Fin de código

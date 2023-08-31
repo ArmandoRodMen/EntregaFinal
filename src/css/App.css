@@ -132,7 +132,6 @@ img{
     margin: 0 10px;
 }
 
-
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #000000 !important;
 }
@@ -146,6 +145,8 @@ img{
     background-color: var(--bs-btn-active-bg);
     border-color: #0a0a0a;
 }
+
+
 /*
     Fin de código
 */

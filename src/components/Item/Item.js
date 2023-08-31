@@ -9,6 +9,7 @@ const Item = ({ item }) => {
     return (
         <div className="column is-one-fifth-desktop is-one-quarter-tablet is-full-mobile">
             {item && (
+                
                 <div>
                     <div className="card">
                         <div className="box">
