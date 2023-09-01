@@ -5,7 +5,7 @@ import { CartContext } from '../CartContext/CartContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CartItem = ({ img, name, price, quantity, id }) => {
+const CartItem = ({ img, title, price, quantity, id }) => {
 
     const { removeItem } = useContext(CartContext);
 
@@ -25,10 +25,10 @@ const CartItem = ({ img, name, price, quantity, id }) => {
         <div className="container mx-auto 10px">
             <p/>
             <div className="container d-flex flex-row justify-content-center section is-small">
-                <img src={img} alt={name} width={60} height={60} />
-                <h4 className="subtitle is-5">Precio: ${price}</h4 >
+                <img src={img} alt={title} width={60} height={60} />
+                <h4 className="subtitle is-5">{title}</h4>
                 <h4  className="subtitle is-5">Cantidad: {quantity} unidades</h4 >
-                <h4 className="subtitle is-5">{name}</h4>
+                <h4 className="subtitle is-5">Precio: ${price}</h4 >
                 <button type="button" class="btn btn-outline-danger" onClick={() => {
                     removeItem(id);
                     notify();

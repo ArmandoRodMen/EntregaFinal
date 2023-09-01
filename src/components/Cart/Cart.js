@@ -27,12 +27,14 @@ const Cart = () => {
             <div className="box">
                 <div >
                     { cart.map(item => <CartItem key={item.id} {...item} />) }
+                    
                     <p className="title is-3 has-text-dark m-5" id="total">Total :  ${parseFloat(totalPrice()).toFixed()}</p>
                 <div className="section is-small">
                         <p/>
                         <button onClick={() => clearCart()} className="btn btn-danger btn-lg btn-block">
                             Eliminar Carrito
                         </button>
+                        
                         <p/>
                         <Link to="/checkout" className="btn btn-primary btn-lg btn-block">Pagar</Link>
                         <p/>

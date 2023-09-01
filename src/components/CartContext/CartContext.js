@@ -1,3 +1,5 @@
+
+
 import { createContext, useState } from "react";
 
 export const CartContext = createContext({
@@ -7,16 +9,14 @@ export const CartContext = createContext({
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
-
-console.log(cart)
+    console.log("Hola desde CartContext");
+    console.log("El carrito es: ",cart)
 
 
 const addItem = (item, quantity) => { 
     if(!isInCart(item.id)) {
         setCart(prev => [...prev, {...item, quantity}])
-    } else {
-        console.error("EL PRODUCTO YA FUE AGREGADO")
-    }
+    } 
 }
 
 const removeItem = (itemId) => {

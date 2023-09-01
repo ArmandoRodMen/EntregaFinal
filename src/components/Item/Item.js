@@ -17,7 +17,7 @@ const Item = ({ item }) => {
 
         const newItem = {
             id: item.id,
-            name: item.name,
+            title: item.title,
             price: item.price,
             img: item.img
         };
