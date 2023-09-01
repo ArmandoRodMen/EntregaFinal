@@ -1,63 +1,68 @@
-import { useContext } from "react"
-import { CartContext } from "../CartContext/CartContext"
-import CartItem from "../CartItem/CartItem"
-import { Link } from "react-router-dom"
+/*
+    Armando Rodriguez
+    PreEntrega2
+*/
+
+import { useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
+import CartItem from "../CartItem/CartItem";
+import { Link } from "react-router-dom";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-import { Stat, StatLabel, StatNumber } from '@chakra-ui/react'
+import { Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 
 const Cart = () => {
-    
-    const { cart, clearCart, totalQuantity, totalPrice } = useContext(CartContext)
-
-    if (totalQuantity === 0) {
-        return (
-            <div className="container mx-auto 10px">
-                <div className="box section is-large ">
-                <h2 className="subtitle is-1" >No hay productos agregados</h2>
-                    <Link to="/">
-                        <IoArrowBackCircleSharp className="icon-large"/>
-                    </Link>
-                </div>
-            </div>
-        )
-    }
-    console.log("totalPrice es:", totalPrice );
+    const { cart, clearCart, totalQuantity, totalPrice } = useContext(CartContext);
 
     return (
-        <div className="container mx-auto 10px">
-            <p/>
-            <div className="box">
-                <div >
-                    { cart.map(item => <CartItem key={item.id} {...item} />) }
-                    <div className="title is-3 has-text-dark m-5" id="total">
-                        <Stat>
-                            <StatLabel>Total</StatLabel>
-                            <StatNumber>${totalPrice()}</StatNumber>
-                        </Stat>
-                    </div>                
-                    <div className="section is-small">
-                        <p/>
-                        <button onClick={() => clearCart()} className="btn btn-danger btn-lg btn-block">
-                            Eliminar Carrito
-                        </button>
-                        
-                        <p/>
-                        <Link to="/checkout" className="btn btn-primary btn-lg btn-block">Pagar</Link>
-                        <p/>
-                        <Link to="/">
-                            <IoArrowBackCircleSharp className="icon-large"/>
-                        </Link>
-                    </div>
+        <div className="container mx-auto mt-5">
+        <div className="box">
+            {totalQuantity === 0 ? (
+            <>
+                <h2 className="subtitle is-1">No hay productos agregados</h2>
+                <Link to="/">
+                <IoArrowBackCircleSharp className="icon-large" />
+                </Link>
+            </>
+            ) : (
+            <>
+                {cart.map((item) => (
+                <CartItem key={item.id} {...item} />
+                ))}
+                <div className="title is-3 has-text-dark m-5" id="total">
+                <Stat>
+                    <StatLabel>Total</StatLabel>
+                    <StatNumber>${totalPrice().toFixed(2)}</StatNumber>
+                </Stat>
                 </div>
-            </div>
-            <p/>
+                <div className="section is-small">
+                <button
+                    onClick={() => clearCart()}
+                    className="btn btn-danger btn-lg btn-block mt-3"
+                >
+                    Eliminar Carrito
+                </button>
+                <Link
+                    to="/checkout"
+                    className="btn btn-primary btn-lg btn-block mt-3"
+                >
+                    Pagar
+                </Link>
+                <Link to="/">
+                    <IoArrowBackCircleSharp className="icon-large mt-3" />
+                </Link>
+                </div>
+            </>
+            )}
         </div>
-    )
-}
+        </div>
+    );
+};
 
 export default Cart;
 
 
 /*
-<StatNumber>${parseFloat(totalPrice()).toFixed()}</StatNumber>
+    Fin de código
 */
+
+

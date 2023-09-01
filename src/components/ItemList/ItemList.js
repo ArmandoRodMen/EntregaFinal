@@ -1,20 +1,20 @@
-import React from 'react'
-import Item from "../Item/Item";
+/*
+    Armando Rodriguez
+    PreEntrega2
+*/
 
-const ItemList = ({ items }) => {
+import React from 'react';
+import Item from '../Item/Item';
 
-    return (
-        <div style={ { 
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-        }}>
-            {
-                items?.map( item => <Item key={ item.id } item={item} /> )
-            } 
-        </div>
-    )
-}
+const ItemList = ({ items }) => (
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {items?.map((item) => <Item key={item.id} item={item} />)}
+    </div>
+);
 
 export default ItemList;
+
+/*
+    Fin de código
+*/
 

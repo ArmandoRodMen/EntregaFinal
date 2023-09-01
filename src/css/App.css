@@ -1,6 +1,6 @@
 /*
     Armando Rodriguez
-    PreEntrega2
+    Entrega Final
 */
 
 /*Importar tipografía*/
@@ -21,6 +21,7 @@ html {
     height: 100%;
 }
 
+/*Estilo del body*/
 body {
     box-sizing: border-box;
     text-align: center;
@@ -41,16 +42,18 @@ nav {
     resize: both;
 }
 
+/*Estilos para tamaños de iconos*/
+
 .icon-large {
-    font-size: 3rem; /* Puedes ajustar el valor según tus necesidades */
+    font-size: 3rem; 
 }
 
 .icon-medium {
-    font-size: 2rem; /* Puedes ajustar el valor según tus necesidades */
+    font-size: 2rem; 
 }
 
 .icon-small {
-    font-size: 1rem; /* Puedes ajustar el valor según tus necesidades */
+    font-size: 1rem; 
 }
 
 /*Diseño h1*/
@@ -115,10 +118,7 @@ p {
 /*Diseño pie de página*/
 footer{
     background-color: #f8f9fa;
-    background-color: #000dff;
 }
-
-
 
 /*Diesño imagen*/
 img{
@@ -127,12 +127,7 @@ img{
     object-fit: cover;
 }
 
-.count {
-    width: 60px;
-    text-align: center;
-    margin: 0 10px;
-}
-
+/*Diseño de botones*/
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #000000 !important;
 }
@@ -141,16 +136,14 @@ img{
     background-color: #ff0000 !important;
 }
 
-.custom-card {
-    height: 800px;
+.custom-button:focus {
+    outline: 2px solid red; /* Adjust the width and color as needed */
+    outline-offset: 2px; /* Adjust the offset as needed */
 }
 
+/*Margen de las cartas*/
 .custom-card .content {
     padding: 20px;
-}
-
-.custom-card .subtitle {
-    margin-bottom: 10px;
 }
 
 /*

@@ -1,3 +1,8 @@
+/*
+    Armando Rodriguez
+    Entrega Final
+*/
+
 import React, { createContext, useContext } from 'react';
 
 // Crea el contexto
@@ -16,3 +21,7 @@ export const FirebaseProvider = ({ children, firebase }) => {
         </FirebaseContext.Provider>
     );
 };
+
+/*
+    Fin de código
+*/

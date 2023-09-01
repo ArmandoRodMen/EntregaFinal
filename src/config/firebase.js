@@ -1,3 +1,8 @@
+/*
+    Armando Rodriguez
+    Entrega Final
+*/
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
@@ -15,6 +20,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = getFirestore(app); // Ahora puedes usar Firestore
+const db = getFirestore(app); // Lllamado a Firestore
 
 export default app; // Exporta la instancia inicializada de Firebase
+
+/*
+    Fin de código
+*/

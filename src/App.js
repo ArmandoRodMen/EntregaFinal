@@ -1,3 +1,8 @@
+/*
+    Armando Rodriguez
+    Entrega Final
+*/
+
 import React from 'react';
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -42,3 +47,7 @@ function App() {
 }
 
 export default App;
+
+/*
+    Fin de código
+*/

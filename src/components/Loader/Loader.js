@@ -1,3 +1,8 @@
+/*
+    Armando Rodriguez
+    PreEntrega2
+*/
+
 import { Audio } from "react-loader-spinner";
 
 function Loader (){
@@ -21,3 +26,8 @@ function Loader (){
 };
 
 export default Loader;
+
+/*
+    Fin de código
+*/
+
