@@ -1,15 +1,33 @@
-import { useState } from "react";
-import { IoBagAddOutline } from "react-icons/io5";
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { IoBagAddOutline } from "react-icons/io5";
 
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 const ItemCount = ({ stock, initial, onAdd }) => {
+
+    const notify = () => {
+        toast.success("Producto añadido", {
+            position: "bottom-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
+    const [addedToCart, setAddedToCart] = useState(false);
     const [quantity, setQuantity] = useState(initial);
+
+    const handleAddToCart = () => {
+        onAdd(quantity);
+        setAddedToCart(true);
+        notify();
+    }
 
     const increment = () => {
         if (quantity < stock) {
@@ -23,56 +41,34 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         }
     }
 
-
     return (
-        <div className="center">
-            
-            <div>
-                <div className="container d-flex flex-row justify-content-center">
-                    <button className="btn btn-danger btn-sm btn-lg" onClick={decrement}>-</button>
-                    <input type="text" value={quantity} className="count" readOnly />
-                    <button className="btn btn-primary btn-sm btn-lg" onClick={increment}>+</button>
-                </div>
-                <p />
-                <div className="container d-flex flex-row justify-content-center">
-                    <button className="button button1" onClick={() => onAdd(quantity)} disabled = {!stock}>Agregar al Carrito</button>
-                </div>
-                
+        <div className="d-flex flex-column align-items-center">
+            <div className="d-flex">
+                <button className="btn btn-danger btn-sm px-2" onClick={decrement}> - </button>
+                <h4 className="mx-3">{quantity}</h4>
+                <button className="btn btn-primary btn-sm px-2" onClick={increment}> + </button>
             </div>
+            <p/>
+            <div className="mt-2">
+                <button className="btn btn-outline-success btn-lg" onClick={handleAddToCart} disabled={!stock || addedToCart}>
+                    <ToastContainer 
+                    position="bottom-right"
+                    autoClose={1000}
+                    hideProgressBar
+                    newestOnTop
+                    closeOnClick={false}
+                    rtl
+                    pauseOnFocusLoss={false}
+                    draggable
+                    pauseOnHover={false}
+                    theme="dark"/>
+
+                    {addedToCart ? 'AGREGADO' : <div className="icon-medium"><IoBagAddOutline/></div>}
+                </button>
+            </div>
+            <p/>
         </div>
     )
 }
 
 export default ItemCount;
-
-
-/*
-    const handleAddToCart = () => {
-        if (quantity > 0) {
-            
-            onAdd(quantity);
-            notify(); // Llamar a la notificación aquí después de agregar al carrito
-        }
-    }
-
-    const notify = () => {
-        toast.success("¡Producto añadido!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
-    }
-
-    <div className="container d-flex flex-row justify-content-center">
-    <button className="btn btn-outline-success btn-lg" onClick={handleAddToCart} disabled={!stock}>
-        <IoBagAddOutline className="icon-small" />
-    </button>
-    </div>
- */
-
-

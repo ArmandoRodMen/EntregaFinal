@@ -2,68 +2,62 @@ import { useContext, useState } from "react"
 import { CartContext } from "../CartContext/CartContext"
 import { Timestamp, collection, documentId, getDocs, query, where, writeBatch, addDoc, getFirestore } from "firebase/firestore"
 import app from "../../config/firebase";
-import CheckoutForm from "../CheckoutForm/CheckoutForm"
-import CartItem from "../CartItem/CartItem"
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import { useEffect } from "react";
 
+import Swal from "sweetalert2";
 
 const Checkout = () => {
-    const db = getFirestore(app);
+    const db = getFirestore(app); 
+    const [loading, setLoading] = useState(false)
+    const [orderId, setOrderId] = useState("")
 
-    const [loading,setLoading] = useState(false)
-    const [orderId, setOrderId] = useState('')
+    const { cart, totalPrice, clearCart } = useContext(CartContext)
 
-    const {cart, totalPrice, clearCart} = useContext(CartContext)
-
-    const createOrder = async ({name, phone, email, email2}) => {
+    const createOrder = async ({ name, phone, email, email2 }) => {
         setLoading(true)
 
-        try{
+        try {
             const objOrder = {
                 buyer: {
                     name, phone, email, email2
                 },
-                items:cart,
-                total:totalPrice(),
+                items: cart,
+                total: totalPrice(),
                 date: Timestamp.fromDate(new Date())
             }
             const batch = writeBatch(db)
-
-            const outOfStock= []
-
-            const ids = cart.map(items => items.id)
-
-            const productsRef = collection(db, 'products')
-
-            const productsAddedFromFirestore = await getDocs(query(productsRef,where(documentId(), 'in', ids)))
-
-            const {docs} = productsAddedFromFirestore
+            const outOfStock = []
+            const ids = cart.map(prod => prod.id)
+            const productosRef = collection(db, "porductos")
+            const productosAddedFromFirestore = await getDocs(query(productosRef, where(documentId(), "in", ids)))
+            const { docs } = productosAddedFromFirestore
 
             docs.forEach(doc => {
                 const dataDoc = doc.data()
-                const stockDb= dataDoc.stock
+                const stockDb = dataDoc.stock
 
-                const productsAddedToCart = cart.find(items => items.id === doc.id)
-                const prodQuantity = productsAddedToCart?.quantity
+                const productoAddedToCart = cart.find(prod => prod.id === doc.id)
+                const prodQuantity = productoAddedToCart?.quantity
 
-                if(stockDb >= prodQuantity) {
-                    batch.update(doc.ref,{stock: stockDb - prodQuantity})
+                if (stockDb >= prodQuantity) {
+                    batch.update(doc.ref, { stock: stockDb - prodQuantity })
                 } else {
-                    outOfStock.push({id:doc.id, ...dataDoc})
+                    outOfStock.push({ id: doc.id, ...dataDoc })
                 }
             })
 
-            if(outOfStock.length === 0) {
+            if (outOfStock.length === 0) {
                 await batch.commit()
 
-                const orderRef = collection(db, 'orders')
-
+                const orderRef = collection(db, "orders")
                 const orderAdded = await addDoc(orderRef, objOrder)
 
                 setOrderId(orderAdded.id)
                 clearCart()
             } else {
-                console.error('Hay productos que están fuera de stock')
-            } 
+                console.error("No hay stock del producto seleccionado")
+            }
         } catch (error) {
             console.log(error)
         } finally {
@@ -71,33 +65,45 @@ const Checkout = () => {
         }
     }
 
-    if (loading) {
-        return <h1 className="h1-size">Se está generando su orden...</h1>
-    }
-    if(orderId){
-        return <h1 className="h1-size">El id de su orden es: {orderId}</h1>
-    }
+    const redirectToInicio = () => {
+        window.location.href = "/";
+    };
+
+    useEffect(() => {
+        if (!loading && orderId) {
+            Swal.fire({
+                title: "PEDIDO REALIZADO",
+                text: `EL ID DE SU PEDIDO ES : ${orderId}`,
+                icon: "success",
+                confirmButtonText: "IR AL INICIO",
+                customClass: {
+                    confirmButton: "button is-success"
+                },
+                onClose: () => {
+                    redirectToInicio();
+                }
+            });
+        } else if (loading) {
+            Swal.fire({
+                title: "Generando el ID de su pedido",
+                text: "Espere un momento...",
+                allowOutsideClick: false,
+                customClass: {
+                    confirmButton: "button is-success"
+                },
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+        }
+    }, [loading, orderId]);
 
     return (
-        <div>
-            <div className='Container2 1'>
-                <div className="font-card">
-                    {
-                        cart.map(items => <CartItem key={items.id} items={items} />)
-                    }
-                </div>
-                <div className='container-total'>
-                    <p className='font-checkout'>
-                        Total: ${totalPrice()}
-                    </p>
-                </div>
-            </div>
-            <h1 className="h1-size">Checkout</h1>
-            <CheckoutForm onConfirm={createOrder}/>
+        <div className="section is-small">
+            <CheckoutForm onConfirm={createOrder} orderId={orderId} loading={loading} redirectToInicio={redirectToInicio} />
         </div>
     )
 }
 
 export default Checkout
 
-//https://github.com/FabrizioFelicetti56/Eccomerce/blob/main/src/components/Checkout/Checkout.js

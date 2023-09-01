@@ -140,12 +140,17 @@ img{
     background-color: #ff0000 !important;
 }
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-    color: var(--bs-btn-active-color);
-    background-color: var(--bs-btn-active-bg);
-    border-color: #0a0a0a;
+.custom-card {
+    height: 800px;
 }
 
+.custom-card .content {
+    padding: 20px;
+}
+
+.custom-card .subtitle {
+    margin-bottom: 10px;
+}
 
 /*
     Fin de código

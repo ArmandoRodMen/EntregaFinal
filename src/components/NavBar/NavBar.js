@@ -31,7 +31,7 @@ function NavBar() {
                         <Nav.Link as={Link} to="/type/power_banks" className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Power Banks</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
-                    <CartWidget />
+                    <CartWidget/>
                 </Container>
             </Navbar>
         </div>
@@ -39,3 +39,5 @@ function NavBar() {
 }
 
 export default NavBar;
+
+

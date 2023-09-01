@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/pages/Layout";
 import NotFound from "./components/pages/NotFound";
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import HoldOn from './components/pages/HoldOn';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 import { CartProvider } from './components/CartContext/CartContext';
@@ -26,10 +25,10 @@ function App() {
                             <Route index element={<ItemListContainer/>}/>
                             <Route path="/type/:typeId" element={<ItemListContainer />} />
                             <Route path="/detail/:itemId" element={<ItemDetailContainer/>} />
-                            <Route path="/HoldOn" element={<HoldOn/>}/>
                             <Route path="*" element={<NotFound/>} />
 
                             <Route path="/cart" element={<Cart/>}/>
+                            <Route path="/checkout" element={<Checkout/>}/>
 
                         </Route>        
                     </Routes> 
