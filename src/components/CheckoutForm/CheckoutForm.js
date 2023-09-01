@@ -27,6 +27,8 @@ const CheckoutForm = ({ onConfirm }) => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Los correos no coinciden',
+                confirmButton: "button is-danger",
+                confirmButtonText: 'Entiendo',
             });
             return;
         }

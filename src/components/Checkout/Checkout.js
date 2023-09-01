@@ -101,7 +101,10 @@ import Swal from "sweetalert2";
                 title: "Generando el ID de su pedido",
                 text: "Espere un momento...",
                 allowOutsideClick: false,
-                showConfirmButton: false
+                customClass: {
+                confirmButton: "button is-danger",
+                confirmButtonText: 'Cancelar',
+                },
             });
             }
     }, [loading, orderId, navigate]);

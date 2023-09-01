@@ -36,7 +36,7 @@ const CartItem = ({ img, title, price, quantity, id }) => {
             <h4 className="subtitle is-5">{title}</h4>
             <h4 className="subtitle is-5">Cantidad: {quantity} unidades</h4>
             <h4 className="subtitle is-5">Precio: ${price}</h4>
-            <button type="button" className="btn btn-outline-danger" onClick={handleRemoveItem}>
+            <button type="button" className="btn btn-outline-danger custom-button" onClick={handleRemoveItem}>
             <ToastContainer
                 position="bottom-right"
                 autoClose={1000}
