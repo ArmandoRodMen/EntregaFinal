@@ -9,6 +9,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { CartProvider } from './components/CartContext/CartContext';
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
+import { ChakraProvider } from '@chakra-ui/react'
 
 import './css/App.css';
 import 'bulma/css/bulma.css';
@@ -17,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
+        <ChakraProvider>
         <div>
             <BrowserRouter>
                 <CartProvider>     
@@ -35,6 +37,7 @@ function App() {
                 </CartProvider>         
             </BrowserRouter>
         </div>
+        </ChakraProvider>
     );
 }
 

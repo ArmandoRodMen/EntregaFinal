@@ -3,6 +3,7 @@ import { CartContext } from "../CartContext/CartContext"
 import CartItem from "../CartItem/CartItem"
 import { Link } from "react-router-dom"
 import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { Stat, StatLabel, StatNumber } from '@chakra-ui/react'
 
 const Cart = () => {
     
@@ -20,6 +21,7 @@ const Cart = () => {
             </div>
         )
     }
+    console.log("totalPrice es:", totalPrice );
 
     return (
         <div className="container mx-auto 10px">
@@ -27,9 +29,13 @@ const Cart = () => {
             <div className="box">
                 <div >
                     { cart.map(item => <CartItem key={item.id} {...item} />) }
-                    
-                    <p className="title is-3 has-text-dark m-5" id="total">Total :  ${parseFloat(totalPrice()).toFixed()}</p>
-                <div className="section is-small">
+                    <div className="title is-3 has-text-dark m-5" id="total">
+                        <Stat>
+                            <StatLabel>Total</StatLabel>
+                            <StatNumber>${totalPrice()}</StatNumber>
+                        </Stat>
+                    </div>                
+                    <div className="section is-small">
                         <p/>
                         <button onClick={() => clearCart()} className="btn btn-danger btn-lg btn-block">
                             Eliminar Carrito
@@ -52,3 +58,6 @@ const Cart = () => {
 export default Cart;
 
 
+/*
+<StatNumber>${parseFloat(totalPrice()).toFixed()}</StatNumber>
+*/

@@ -34,7 +34,6 @@ const ItemDetailContainer = () => {
         } else {
             setLoading(false);
         }
-        console.log("itemId es: ",itemId);
     }, [itemId, db]);
 
 

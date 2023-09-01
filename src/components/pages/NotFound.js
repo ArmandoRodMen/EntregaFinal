@@ -9,6 +9,8 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom" //Importar componente de react para linkear y navegar
 import shoppingCartIcon from "../NavBar/media/icon.svg";
 
+import { Center, Square, Circle } from '@chakra-ui/react'
+
 const NotFound = () => {
 
     return ( //Regresar elementos para la página de error

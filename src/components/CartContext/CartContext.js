@@ -9,9 +9,6 @@ export const CartContext = createContext({
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
-    console.log("Hola desde CartContext");
-    console.log("El carrito es: ",cart)
-
 
 const addItem = (item, quantity) => { 
     if(!isInCart(item.id)) {
