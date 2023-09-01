@@ -4,45 +4,11 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 
 
-
-
-const CheckoutForm = (props) => {
-    const [name, setName] = useState("")
-    const [phone, setPhone] = useState("")
-    const [email, setEmail] = useState("")
-    const [email2, setEmail2] = useState("")
-
-    useEffect(() => {
-        if (!props.loading && props.orderId) {
-            let successMessage = `EL ID DE SU PEDIDO ES : ${props.orderId}`;
-
-            Swal.fire({
-                title: "PEDIDO REALIZADO",
-                text: successMessage,
-                icon: "success",
-                confirmButtonText: "IR AL INICIO",
-                customClass: {
-                    confirmButton: "button is-success"
-                },
-                onClose: () => {
-                    props.redirectToInicio();
-                }
-            });
-        } else if (props.loading) {
-            Swal.fire({
-                title: "Generando el ID de su pedido",
-                text: "Espere un momento...",
-                allowOutsideClick: false,
-                customClass: {
-                    confirmButton: "button is-success"
-                },
-                onBeforeOpen: () => {
-                    Swal.showLoading();
-                }
-            });
-        }
-    }, [props.loading, props.orderId]);
-
+const CheckoutForm = ({ onConfirm }) => {
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const[email2, setEmail2] = useState('')
 
     const handleConfirm = (event) => {
         event.preventDefault();
@@ -55,19 +21,18 @@ const CheckoutForm = (props) => {
             })
             return;
         }
-    
+        
         const userData = {
             name, phone, email, email2
         };
-        props.onConfirm(userData); // Usa props.onConfirm aquí
+        onConfirm(userData); 
     };
-
 
     return (
         <div className="container mx-auto 10px container d-flex flex-row justify-content-center">
             <div className="box">
                 <h2 className="container mx-auto 10px container d-flex flex-row justify-content-center">¡Ya casi es tuyo!</h2>
-                <form className="section is-large" onSubmit={handleConfirm} >
+                <form onSubmit={handleConfirm} className="section is-large">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 ">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">

@@ -1,9 +1,8 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { CartContext } from "../CartContext/CartContext"
 import { Timestamp, collection, documentId, getDocs, query, where, writeBatch, addDoc, getFirestore } from "firebase/firestore"
 import app from "../../config/firebase";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
-import { useEffect } from "react";
 
 import Swal from "sweetalert2";
 
@@ -100,7 +99,7 @@ const Checkout = () => {
 
     return (
         <div className="section is-small">
-            <CheckoutForm onConfirm={createOrder} orderId={orderId} loading={loading} redirectToInicio={redirectToInicio} />
+            <CheckoutForm onConfirm={createOrder}  />
         </div>
     )
 }
