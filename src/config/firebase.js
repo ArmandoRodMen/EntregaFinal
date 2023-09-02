@@ -7,20 +7,20 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Obtén las credenciales de Firebase desde las variables de entorno
 const firebaseConfig = {
-    apiKey: "AIzaSyCjs84uPckEVItrBMnwBihqeMR8jqteIvU",
-    authDomain: "entregafinalrodriguez-17e6d.firebaseapp.com",
-    projectId: "entregafinalrodriguez-17e6d",
-    storageBucket: "entregafinalrodriguez-17e6d.appspot.com",
-    messagingSenderId: "460125155215",
-    appId: "1:460125155215:web:777ae5a7b9547db92825fa",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = getFirestore(app); // Lllamado a Firestore
+const db = getFirestore(app);
 
 export default app; // Exporta la instancia inicializada de Firebase
 
