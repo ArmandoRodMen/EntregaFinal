@@ -4,10 +4,9 @@
 */
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
-// Obtén las credenciales de Firebase desde las variables de entorno
+// Cargar las credenciales
 const firebaseConfig = {
     apiKey: "AIzaSyCjs84uPckEVItrBMnwBihqeMR8jqteIvU",
     authDomain: "entregafinalrodriguez-17e6d.firebaseapp.com",
@@ -19,10 +18,10 @@ const firebaseConfig = {
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 export default app;
+
 /*
 N.B: de momento .env manda demasiados errores en su deploy 
 (V.G: 

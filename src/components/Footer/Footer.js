@@ -7,6 +7,8 @@ import React from 'react';
 import icon from '../NavBar/media/icon.svg';
 
 function Footer() {
+
+    //Regresa un pie de página
     return (
         <footer className="section is-small">
         <div className="container d-flex flex-row justify-content-center">

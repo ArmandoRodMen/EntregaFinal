@@ -11,6 +11,7 @@ import { BsFillCartFill } from "react-icons/bs";
 const CartWidget = () => {
     const { totalQuantity } = useContext(CartContext);
 
+    //Regresa un botón con el icono de un carrito y el total de items añadidos
     return (
         <Link to="/cart" className="btn btn-danger">
         <div className="container d-flex flex-row justify-content-center">

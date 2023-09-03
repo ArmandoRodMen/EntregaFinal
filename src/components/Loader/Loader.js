@@ -5,6 +5,8 @@
 
 import { Audio } from "react-loader-spinner";
 
+
+//Componente que se dedsplega cada que hay un cargado en la pantalla
 function Loader (){
     return(
     <div className="container d-flex flex-row justify-content-center">

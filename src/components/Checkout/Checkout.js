@@ -3,6 +3,9 @@
     PreEntrega2
 */
 
+import Swal from "sweetalert2";
+import app from "../../config/firebase";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../CartContext/CartContext";
 import {
@@ -16,19 +19,15 @@ import {
     addDoc,
     getFirestore,
     } from "firebase/firestore";
-import app from "../../config/firebase";
-import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+
 
     const Checkout = () => {
         const db = getFirestore(app);
         const { cart, clearCart } = useContext(CartContext);
         const navigate = useNavigate();
-
         const [loading, setLoading] = useState(false);
         const [orderId, setOrderId] = useState("");
-
         const createOrder = async ({ name, phone, email }) => {
             setLoading(true);
 
@@ -54,10 +53,8 @@ import Swal from "sweetalert2";
                 productsAddedFromFirestore.docs.forEach((doc) => {
                 const dataDoc = doc.data();
                 const stockDb = dataDoc.stock;
-
                 const productoAddedToCart = cart.find((item) => item.id === doc.id);
                 const prodQuantity = productoAddedToCart?.quantity;
-
                 if (stockDb >= prodQuantity) {
                     batch.update(doc.ref, { stock: stockDb - prodQuantity });
                 } else {
@@ -111,7 +108,7 @@ import Swal from "sweetalert2";
 
     return (
         <div className="section is-small">
-        <CheckoutForm onConfirm={createOrder} />
+            <CheckoutForm onConfirm={createOrder} />
         </div>
     );
 };

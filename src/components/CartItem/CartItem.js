@@ -10,12 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const CartItem = ({ img, title, price, quantity, id }) => {
     const { removeItem } = useContext(CartContext);
-
     const handleRemoveItem = () => {
         removeItem(id);
         notify();
     };
-
     const notify = () => {
         toast.error('Producto eliminado', {
         position: 'bottom-right',
@@ -28,6 +26,8 @@ const CartItem = ({ img, title, price, quantity, id }) => {
         });
     };
 
+
+    //Regresa una fila con el item seleccionado para el checkout
     return (
         <div className="container mx-auto 10px">
         <p />

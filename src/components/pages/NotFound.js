@@ -4,11 +4,12 @@
 */
 
 import React from 'react';
+import shoppingCartIcon from '../NavBar/media/icon.svg';
 import { IoArrowBackCircleSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-import shoppingCartIcon from '../NavBar/media/icon.svg';
 
 const NotFound = () => {
+    //Regresar una página de error de carga
     return (
         <div className="container mx-auto 10px">
         <div className="box">

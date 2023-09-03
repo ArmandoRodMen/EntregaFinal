@@ -10,11 +10,12 @@ import { Checkbox } from '@chakra-ui/react'
 import Swal from "sweetalert2";
 
 const CheckoutForm = ({ onConfirm }) => {
+
+    //Declaración de estados
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const[email2, setEmail2] = useState('')
-
     const handleConfirm = (event) => {
         event.preventDefault();
 
@@ -32,10 +33,11 @@ const CheckoutForm = ({ onConfirm }) => {
             });
             return;
         }
-
         onConfirm(userData); 
     };
 
+
+    //Regresa un formulario para crear la orden cambiando propiedades de estados
     return (
         <div className="container mx-auto 10px container d-flex flex-row justify-content-center">
             <div className="box">

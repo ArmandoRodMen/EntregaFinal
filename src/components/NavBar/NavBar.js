@@ -4,15 +4,14 @@
 */
 
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import logo from '../NavBar/media/logo.svg';
 import { Link } from 'react-router-dom';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
-// Define reusable constants
+// Contenido reusable
 const BRAND_LOGO_WIDTH = "300";
 const NAV_LINKS = [
-    { to: "/", text: "Home" },
     { to: "/type/PC", text: "PC" },
     { to: "/type/tablets", text: "Tablets" },
     { to: "/type/phones", text: "Celulares" },
@@ -20,6 +19,7 @@ const NAV_LINKS = [
     { to: "/type/power_banks", text: "Power Banks" },
 ];
 
+//Regresar una barra de navegación que manda a llamar el arreglo de contenido reusable para generarse
 function NavBar() {
     return (
         <Navbar expand="lg" variant="light">

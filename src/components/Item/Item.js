@@ -11,14 +11,13 @@ import { CartContext } from "../CartContext/CartContext";
 import { useContext, useState } from "react";
 
 const Item = ({ item }) => {
-    const { id, title, stock, price, img, alt, text} = item;
 
+    //Declaración de estados y propiedades de un objeto
+    const { id, title, price, img, alt, text} = item;
     const [quantityAdded, setQuantity] = useState(0);
     const { addItem } = useContext(CartContext);
-
     const handleOnAdd = (quantity) => {
         setQuantity(quantity);
-
         const newItem = {
             id: item.id,
             title: item.title,
@@ -29,6 +28,7 @@ const Item = ({ item }) => {
         addItem(newItem, quantity);
     }
 
+    //Regresa los items arreglados en sus respectivas cartas con un icono para navegar a detalle y un contador
     return (
         <div className="column is-one-fifth-desktop is-one-quarter-tablet is-full-mobile">
             {item && (
